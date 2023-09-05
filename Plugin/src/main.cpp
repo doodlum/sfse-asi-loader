@@ -125,24 +125,26 @@ void FindFiles(WIN32_FIND_DATAW* fd)
 
 						if (h == NULL) {
 							auto e = GetLastError();
-							ERROR("Failed to load plugin {} : Error {}", ws2s(path), e);
 							if (e != ERROR_DLL_INIT_FAILED && e != ERROR_BAD_EXE_FORMAT)  // In case dllmain returns false or IMAGE_MACHINE is not compatible
 							{
-								std::wstring msg = L"Unable to load " + std::wstring(fd->cFileName) + L". Error: " + std::to_wstring(e);
-								MessageBoxW(0, msg.c_str(), L"ASI Loader", MB_ICONERROR);
+								ERROR("Failed to load plugin {} : Error {}", ws2s(path), e);
+							} else if (e != ERROR_DLL_INIT_FAILED) {
+								INFO("Failed to load plugin {} : ERROR_DLL_INIT_FAILED", ws2s(path));
+							} else {
+								INFO("Failed to load plugin {} : ERROR_BAD_EXE_FORMAT", ws2s(path));
 							}
 						} else {
-							INFO("Loaded plugin");
+							INFO("Loaded plugin successfully");
 
 							auto procedure = (void (*)())GetProcAddress(h, "InitializeASI");
 
 							if (procedure != NULL) {
-								INFO("InitializeASI found, calling");
+								INFO("Calling InitializeASI");
 								procedure();
-							} else {
-								ERROR("InitializeASI not found");
 							}
 						}
+					} else {
+						INFO("Plugin was already loaded, ignoring");
 					}
 				}
 			}
@@ -155,30 +157,28 @@ void LoadPlugins()
 {
 	auto oldDir = GetCurrentDirectoryW();  // Store the current directory
 
-	auto szSelfPath = GetModuleFileNameW(hm).substr(0, GetModuleFileNameW(hm).find_last_of(L"/\\") + 1);
+	auto szSelfPath = GetModuleFileNameW(nullptr).substr(0, GetModuleFileNameW(nullptr).find_last_of(L"/\\") + 1);
 	SetCurrentDirectoryW(szSelfPath.c_str());
 
 	WIN32_FIND_DATAW fd;
 
-	INFO("Loading plugins from {}", ws2s(szSelfPath));
-	FindFiles(&fd);
-
-	SetCurrentDirectoryW(szSelfPath.c_str());
-
-	if (SetCurrentDirectoryW(L"Scripts\\")) {
-		INFO("Loading plugins from {}", ws2s(szSelfPath));
+	{
+		INFO("Loading plugins from {}", ws2s(GetCurrentDirectoryW()));
 		FindFiles(&fd);
-	} else {
-		INFO("Not loading plugins from {} : Error {}", ws2s(szSelfPath), GetLastError());
 	}
 
 	SetCurrentDirectoryW(szSelfPath.c_str());
 
 	if (SetCurrentDirectoryW(L"Plugins\\")) {
-		INFO("Loading plugins from {}", ws2s(szSelfPath));
+		INFO("Loading plugins from {}", ws2s(GetCurrentDirectoryW()));
 		FindFiles(&fd);
-	} else {
-		INFO("Not loading plugins from {} : Error {}", ws2s(szSelfPath), GetLastError());
+	}
+
+	SetCurrentDirectoryW(szSelfPath.c_str());
+
+	if (SetCurrentDirectoryW(L"Data\\")) {
+		INFO("Loading plugins from {}", ws2s(GetCurrentDirectoryW()));
+		FindFiles(&fd);
 	}
 
 	SetCurrentDirectoryW(oldDir.c_str());  // Reset the current directory
