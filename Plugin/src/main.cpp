@@ -22,19 +22,6 @@
 //	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //	SOFTWARE.
 
-HMODULE hm = nullptr;
-
-BOOL APIENTRY DllMain(HMODULE a_hModule, DWORD fdwReason, LPVOID)
-{
-	switch (fdwReason) {
-	case DLL_PROCESS_ATTACH:
-		hm = a_hModule;
-		break;
-	}
-
-	return TRUE;
-}
-
 DLLEXPORT constinit auto SFSEPlugin_Version = []() noexcept {
 	SFSE::PluginVersionData data{};
 
