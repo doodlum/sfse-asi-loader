@@ -1,3 +1,6 @@
+![GitHub Release](https://img.shields.io/github/v/release/IanE-Official/rehash-sfse-asi-loader)
+
+
 # 📑 SFSE Plugin Template
 Native dll plugin template (in-draft) for [starfield script extender](https://github.com/ianpatt/sfse).
 
