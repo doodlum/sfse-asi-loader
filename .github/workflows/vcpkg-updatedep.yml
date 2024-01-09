@@ -29,10 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: 'recursive'  
- 
-      - name: cd Plugin
-        run: cd Plugin
+          submodules: 'recursive'
 
       - name: Bootstrap vcpkg
         run: ${{ github.workspace }}/extern/vcpkg/bootstrap-vcpkg.bat
