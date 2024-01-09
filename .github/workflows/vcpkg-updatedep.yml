@@ -1,36 +1,44 @@
-# This is a basic workflow to help you get started with Actions
+name: vcpkg-update dep
 
-name: vcpkg-updatedep
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the $default-branch branch
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+###############################################################################
+# Add this section to your workflow file does not already have it to enable
+# the job to write the dependency metadata.
+###############################################################################
+permissions:
+  contents: write
+
+###############################################################################
+# Add these environment variables to your workflow to enable the vcpkg
+# dependency graph integration.
+###############################################################################
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VCPKG_FEATURE_FLAGS: dependencygraph
+
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # These steps assume an appropriate version of vcpkg is listed as a
+    # submodule in your git repo. If it is not, you must update this workflow
+    # to obtain it.
+
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'  
+ 
+      - name: cd Plugin
+        run: cd Plugin
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Bootstrap vcpkg
+        run: ${{ github.workspace }}/extern/vcpkg/bootstrap-vcpkg.bat
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Directly invoke `vcpkg install`
+        run: ${{ github.workspace }}/Plugin/vcpkg install
+
+      - name: Build with G++
+        run: g++ -I${{ github.workspace }}//Plugin/src -o main.cpp
