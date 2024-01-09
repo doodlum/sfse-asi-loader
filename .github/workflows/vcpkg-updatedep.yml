@@ -35,7 +35,7 @@ jobs:
         run: ${{ github.workspace }}/extern/vcpkg/bootstrap-vcpkg.bat
 
       - name: Directly invoke `vcpkg install`
-        run: ${{ github.workspace }}/Plugin/vcpkg install
+        run: ${{ github.workspace }}/vcpkg install /Plugin
 
       - name: Build with G++
-        run: g++ -I${{ github.workspace }}//Plugin/src -o main.cpp
+        run: g++ -I${{ github.workspace }}/Plugin/src -o main.cpp
