@@ -1,8 +1,8 @@
 ![GitHub Release](https://img.shields.io/github/v/release/IanE-Official/rehash-sfse-asi-loader)
 
 
-# 📑 SFSE Plugin Template
-Native dll plugin template (in-draft) for [starfield script extender](https://github.com/ianpatt/sfse).
+# 📑 SFSE ASI Loader
+SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by Ian E.
 
 ## ⚙ Requirements
 
@@ -20,7 +20,12 @@ Native dll plugin template (in-draft) for [starfield script extender](https://gi
 - [Starfield Steam Distribution](#-deployment)
   - Add the environment variable `SFPath` with the value as the path to the game installation
   
-## Get started
+## To install / use this mod as an end-user:
+
+- Download latest compiled version from [NexusMods](https://www.nexusmods.com/starfield/mods/8055?tab=files) or my [Github Releases](https://github.com/IanE-Official/rehash-sfse-asi-loader/releases)
+- To use just place expand in your Starfield data directory or just copy the DLL to ```{StarfieldDirectory}/Data/SFSE/Plugins/``` and run the game
+
+## Get started from source
 
 ### 💻 Register Visual Studio as a Generator
 
@@ -30,15 +35,15 @@ Native dll plugin template (in-draft) for [starfield script extender](https://gi
 
 ### 🔨 Building
 
-[Create a new github repo from this template](https://github.com/new?template_name=SF_PluginTemplate&template_owner=gottyduke) or (unrecommended): 
+To build from source (unrecommended): 
 ```
-git clone https://github.com/gottyduke/SF_PluginTemplate.git Plugin
+git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin
 cd Plugin
 git submodule init
 git submodule update --remote
 .\build-release.ps1
 ```
-> Don't forget to change project name within `Plugin/CMakeLists.txt` and update `vcpkg.json` accordingly.
+> Change {version} to the newest version of starfield you are trying to build for (currently 1.8.88).
 
 ### 📦 Deployment
 
@@ -74,6 +79,7 @@ This project bundles [DKUtil](https://github.com/gottyduke/DKUtil).
 
 ## ❓ Credits
 
+- [Doodlez's original Mod](https://www.nexusmods.com/starfield/mods/857) which this was forked from.
 - [Ryan for his commonLibSSE code](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE) which was referenced in DKUtil.
 - [ianpatt's starfield script extender](https://github.com/ianpatt/sfse).
 - [Original plugin template](https://github.com/gottyduke/PluginTemplate)
