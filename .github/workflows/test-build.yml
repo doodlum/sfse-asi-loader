@@ -1,4 +1,4 @@
-name: vcpkg-update dep
+name: test-build
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ env:
   VCPKG_FEATURE_FLAGS: dependencygraph
 
 jobs:
-  build:
+  cmake:
     runs-on: windows-latest
 
     # These steps assume an appropriate version of vcpkg is listed as a
@@ -29,13 +29,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: 'recursive'
+          submodules: 'recursive'  
 
       - name: Bootstrap vcpkg
         run: ${{ github.workspace }}/extern/vcpkg/bootstrap-vcpkg.bat
 
-      - name: Directly invoke `vcpkg install`
-        run: ${{ github.workspace }}/vcpkg install /Plugin
-
-      - name: Build with G++
-        run: g++ -I${{ github.workspace }}/Plugin/src -o main.cpp
+      - name: Integrate vcpkg
+        run: ${{ github.workspace }}/extern/vcpkg/vcpkg integrate install
+      
+      - name: Build
+        run: pwsh ./build-release.ps1
