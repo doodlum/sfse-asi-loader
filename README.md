@@ -47,7 +47,6 @@ git submodule update --remote
 
 ### 📦 Deployment
 
-This plugin template comes with a simple custom deployer script to enable custom distribution rules fitting most use cases.  
 To get started on adding custom deploy rules, check out the [default examples](Plugin/dist/rules).  
 | action    | usage                                                        |
 | --------- | ------------------------------------------------------------ |
