@@ -38,4 +38,4 @@ jobs:
         run: ${{ github.workspace }}/extern/vcpkg/vcpkg integrate install
       
       - name: Build
-        run: pwsh ./.ghaction-scripts/build-test.ps1
+        run: pwsh ./.ghaction_build-test.ps1
