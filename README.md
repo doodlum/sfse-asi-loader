@@ -1,4 +1,5 @@
 ![GitHub Release](https://img.shields.io/github/v/release/IanE-Official/rehash-sfse-asi-loader)
+[![Main/Release Build](https://github.com/IanE-Official/rehash-sfse-asi-loader/actions/workflows/build-push.yml/badge.svg)](https://github.com/IanE-Official/rehash-sfse-asi-loader/actions/workflows/build-push.yml)
 
 # 📑 SFSE ASI Loader
 
@@ -22,6 +23,7 @@ SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by I
 
 ## To install / use this mod as an end-user:
 
+- For the mod to work correctly, Install Starfield (Steam Edition), [Starfield Script Extender (SFSE)](https://www.nexusmods.com/starfield/mods/106), and [Address Library for SFSE Plugins](https://www.nexusmods.com/starfield/mods/3256).
 - Download latest compiled version from [NexusMods](https://www.nexusmods.com/starfield/mods/8055?tab=files) or my [Github Releases](https://github.com/IanE-Official/rehash-sfse-asi-loader/releases)
 - To use just place expand in your Starfield data directory or just copy the DLL to `{StarfieldDirectory}/Data/SFSE/Plugins/` and run the game
 

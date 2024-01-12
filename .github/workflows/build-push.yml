@@ -1,0 +1,44 @@
+name: build-push
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'releases/**'
+
+###############################################################################
+# Add this section to your workflow file does not already have it to enable
+# the job to write the dependency metadata.
+###############################################################################
+permissions:
+  contents: write
+
+###############################################################################
+# Add these environment variables to your workflow to enable the vcpkg
+# dependency graph integration.
+###############################################################################
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VCPKG_FEATURE_FLAGS: dependencygraph
+
+jobs:
+  cmake:
+    runs-on: windows-latest
+
+    # These steps assume an appropriate version of vcpkg is listed as a
+    # submodule in your git repo. If it is not, you must update this workflow
+    # to obtain it.
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'  
+
+      - name: Bootstrap vcpkg
+        run: ${{ github.workspace }}/extern/vcpkg/bootstrap-vcpkg.bat
+
+      - name: Integrate vcpkg
+        run: ${{ github.workspace }}/extern/vcpkg/vcpkg integrate install
+      
+      - name: Build
+        run: pwsh ./build-release.ps1
