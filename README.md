@@ -27,7 +27,7 @@ SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by I
 
 ## Get started from source
 
-### 💻 Register Visual Studio as a Generator
+### 💻 Register Visual Studio Community 2022 as a Generator
 
 - Open `x64 Native Tools Command Prompt`
 - Run `cmake`
@@ -46,6 +46,8 @@ git submodule update --remote
 ```
 
 > Change {version} to the newest version of starfield you are trying to build for (currently 1.8.88).
+
+> Please note, failure to set the environment variables as described in requirements section WILL result in the build failing.
 
 ### 📦 Deployment
 
