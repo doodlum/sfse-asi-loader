@@ -1101,40 +1101,42 @@ body .markdown-body
 <li>To use just place expand in your Starfield data directory or just copy the DLL to <code>{StarfieldDirectory}/Data/SFSE/Plugins/</code> and run the game</li>
 </ul>
 <h2 id="get-started-from-source">Get started from source<a class="headerlink" href="#get-started-from-source" title="Permanent link"></a></h2>
-<h3 id="register-visual-studio-as-a-generator">💻 Register Visual Studio as a Generator<a class="headerlink" href="#register-visual-studio-as-a-generator" title="Permanent link"></a></h3>
+<h3 id="register-visual-studio-community-2022-as-a-generator">💻 Register Visual Studio Community 2022 as a Generator<a class="headerlink" href="#register-visual-studio-community-2022-as-a-generator" title="Permanent link"></a></h3>
 <ul>
 <li>Open <code>x64 Native Tools Command Prompt</code></li>
 <li>Run <code>cmake</code></li>
 <li>Close the cmd window</li>
 </ul>
 <h3 id="building">🔨 Building<a class="headerlink" href="#building" title="Permanent link"></a></h3>
-<p>To build from source (unrecommended): 
+<p>To build from source (unrecommended):</p>
 <div class="highlight"><pre>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin
 cd Plugin
 git submodule init
 git submodule update --remote
 .\build-release.ps1
-</pre></div></p>
+</pre></div>
+
 <blockquote>
 <p>Change {version} to the newest version of starfield you are trying to build for (currently 1.8.88).</p>
+<p>Please note, failure to set the environment variables as described in requirements section WILL result in the build failing. </p>
 </blockquote>
 <h3 id="deployment">📦 Deployment<a class="headerlink" href="#deployment" title="Permanent link"></a></h3>
-<p>This plugin template comes with a simple custom deployer script to enable custom distribution rules fitting most use cases.<br />
-To get started on adding custom deploy rules, check out the <a href="/Users/iane/GitWorkspace/rehash-sfse-asi-loader/Plugin/dist/rules">default examples</a>.<br />
-| action    | usage                                                        |
+<p>To get started on adding custom deploy rules, check out the <a href="/Users/iane/GitWorkspace/rehash-sfse-asi-loader/Plugin/dist/rules">default examples</a>.
+| action | usage |
 | --------- | ------------------------------------------------------------ |
-| <code>base</code>    | set variable <code>params[0]</code> with value <code>params[1]</code>              |
-| <code>copy</code>    | copy <code>params[0]</code> to <code>params[1]</code>                              |
-| <code>copy_if</code> | do <code>copy</code> if file exists                                     |
+| <code>base</code> | set variable <code>params[0]</code> with value <code>params[1]</code> |
+| <code>copy</code> | copy <code>params[0]</code> to <code>params[1]</code> |
+| <code>copy_if</code> | do <code>copy</code> if file exists |
 | <code>package</code> | add <code>params[0..-1]</code> list of sources to zip file <code>params[-1]</code> |
-| <code>remove</code>  | remove <code>params</code> list of sources                              |
-| <code>script</code>  | execute raw powershell script                                |</p>
-<p>The following base variables are provided by default:
+| <code>remove</code> | remove <code>params</code> list of sources |
+| <code>script</code> | execute raw powershell script |</p>
+<p>The following base variables are provided by default:</p>
 <div class="highlight"><pre>cmake_output    // this is the binary output path
 dist            // this is the dist folder path, also the working directory of deployer script
 project_name    // project name same as CMakeLists
 project_version // project version same as CMakeLists
-</pre></div></p>
+</pre></div>
+
 <p>Deploy actions can be enabled by build configuration(<code>debug</code>, <code>release</code>, <code>relwithdebinfo</code>, etc)</p>
 <h3 id="dkutil-addon">➕ DKUtil addon<a class="headerlink" href="#dkutil-addon" title="Permanent link"></a></h3>
 <p>This project bundles <a href="https://github.com/gottyduke/DKUtil">DKUtil</a>.</p>
