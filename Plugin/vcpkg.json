@@ -1,14 +1,14 @@
 {
-    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
-    "name": "sfseasiloader",
-    "version-string": "1.0.1",
-    "description": "asi loader for sfse",
-    "homepage": "https://github.com/IanE-Official/rehash-sfse-asi-loader",
-    "dependencies": [
-        "spdlog",
-        "nlohmann-json",
-        "simpleini",
-        "tomlplusplus",
-        "xbyak"
-    ]
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "sfseasiloader",
+  "version-string": "1.0.1",
+  "description": "asi loader for sfse",
+  "homepage": "https://github.com/IanE-Official/rehash-sfse-asi-loader",
+  "dependencies": [
+    "spdlog",
+    "nlohmann-json",
+    "simpleini",
+    "tomlplusplus",
+    "xbyak"
+  ]
 }

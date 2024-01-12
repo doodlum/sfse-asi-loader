@@ -31,10 +31,22 @@ namespace SFSE
 			kTotal,
 		};
 
-		[[nodiscard]] constexpr auto        RuntimeVersion() const { return GetProxy()->runtimeVersion; }
-		[[nodiscard]] constexpr auto        SFSEVersion() const { return GetProxy()->sfseVersion; }
-		[[nodiscard]] constexpr auto        GetPluginHandle() const { return handle; };
-		[[nodiscard]] constexpr const auto* GetPluginInfo(const char* a_name) const { return GetProxy()->GetPluginInfo(a_name); }
+		[[nodiscard]] constexpr auto RuntimeVersion() const
+		{
+			return GetProxy()->runtimeVersion;
+		}
+		[[nodiscard]] constexpr auto SFSEVersion() const
+		{
+			return GetProxy()->sfseVersion;
+		}
+		[[nodiscard]] constexpr auto GetPluginHandle() const
+		{
+			return handle;
+		};
+		[[nodiscard]] constexpr const auto* GetPluginInfo(const char* a_name) const
+		{
+			return GetProxy()->GetPluginInfo(a_name);
+		}
 		template <typename T>
 		[[nodiscard]] constexpr T* QueryInterface(std::uint32_t a_id) const
 		{
@@ -153,7 +165,10 @@ namespace SFSE
 		storage->handle = detail::load_storage->GetPluginHandle();
 	}
 
-	[[nodiscard]] inline constexpr const auto* GetLoadInterface() noexcept { return SFSE::LoadInterface::GetSingleton(); }
+	[[nodiscard]] inline constexpr const auto* GetLoadInterface() noexcept
+	{
+		return SFSE::LoadInterface::GetSingleton();
+	}
 	[[nodiscard]] inline constexpr const auto* GetMessagingInterface() noexcept
 	{
 		return MessagingInterface::GetSingleton();
@@ -163,7 +178,10 @@ namespace SFSE
 		return TrampolineInterface::GetSingleton();
 	}
 
-	[[nodiscard]] inline auto& GetTrampoline() noexcept { return DKUtil::Hook::Trampoline::GetTrampoline(); }
+	[[nodiscard]] inline auto& GetTrampoline() noexcept
+	{
+		return DKUtil::Hook::Trampoline::GetTrampoline();
+	}
 
 	// offer SFSE reserve pool first, otherwise use local trampoline
 	void* AllocTrampoline(std::size_t a_size, bool a_useSFSEReserve = true)
@@ -227,20 +245,44 @@ namespace SFSE
 			// additional bits will be added here when breaking changes happen
 		};
 
-		constexpr void PluginVersion(std::uint32_t a_version) noexcept { pluginVersion = a_version; }
-		constexpr void PluginName(std::string_view a_plugin) noexcept { SetCharBuffer(a_plugin, std::span{ pluginName }); }
-		constexpr void AuthorName(std::string_view a_name) noexcept { SetCharBuffer(a_name, std::span{ author }); }
-		constexpr void UsesSigScanning(bool a_value) noexcept { addressIndependence.set(AddressIndependence::kSignatureScanning); }
-		constexpr void UsesAddressLibrary(bool a_value) noexcept { addressIndependence.set(AddressIndependence::kAddressLibrary); }
-		constexpr void HasNoStructUse(bool a_value) noexcept { structureCompatibility.set(StructureIndependence::kNoStructs); }
-		constexpr void IsLayoutDependent(bool a_value) noexcept { structureCompatibility.set(StructureIndependence::kInitialLayout); }
+		constexpr void PluginVersion(std::uint32_t a_version) noexcept
+		{
+			pluginVersion = a_version;
+		}
+		constexpr void PluginName(std::string_view a_plugin) noexcept
+		{
+			SetCharBuffer(a_plugin, std::span{ pluginName });
+		}
+		constexpr void AuthorName(std::string_view a_name) noexcept
+		{
+			SetCharBuffer(a_name, std::span{ author });
+		}
+		constexpr void UsesSigScanning(bool a_value) noexcept
+		{
+			addressIndependence.set(AddressIndependence::kSignatureScanning);
+		}
+		constexpr void UsesAddressLibrary(bool a_value) noexcept
+		{
+			addressIndependence.set(AddressIndependence::kAddressLibrary);
+		}
+		constexpr void HasNoStructUse(bool a_value) noexcept
+		{
+			structureCompatibility.set(StructureIndependence::kNoStructs);
+		}
+		constexpr void IsLayoutDependent(bool a_value) noexcept
+		{
+			structureCompatibility.set(StructureIndependence::kInitialLayout);
+		}
 		constexpr void CompatibleVersions(std::initializer_list<std::uint32_t> a_versions) noexcept
 		{
 			// must be zero-terminated
 			assert(a_versions.size() < std::size(compatibleVersions) - 1);
 			std::ranges::copy(a_versions, compatibleVersions);
 		}
-		constexpr void MinimumRequiredXSEVersion(std::uint32_t a_version) noexcept { xseMinimum = a_version; }
+		constexpr void MinimumRequiredXSEVersion(std::uint32_t a_version) noexcept
+		{
+			xseMinimum = a_version;
+		}
 
 		const std::uint32_t                     dataVersion{ kVersion };                                 // shipped with xse
 		std::uint32_t                           pluginVersion = 0;                                       // version number of your plugin

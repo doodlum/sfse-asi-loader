@@ -47,7 +47,7 @@ git submodule update --remote
 
 > Change {version} to the newest version of starfield you are trying to build for (currently 1.8.88).
 
-> Please note, failure to set the environment variables as described in requirements section WILL result in the build failing. 
+> Please note, failure to set the environment variables as described in requirements section WILL result in the build failing.
 
 ### 📦 Deployment
 
