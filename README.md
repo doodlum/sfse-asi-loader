@@ -53,9 +53,9 @@ cd ..
 .\build-release.ps1
 ```
 
-> If you are building for a Starfield **_other than latest_**, use ```git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin
+> If you are building for a Starfield **_other than latest_**, use ```git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin```
 
-```where {version} is set to the newest version of starfield you are trying to build for (currently 1.8.88).
+where {version} is set to the newest version of starfield you are trying to build for (currently 1.8.88).
 
 ### 📦 Deployment
 
@@ -78,4 +78,3 @@ See [security.md](security.html)
 - [Ryan for his commonLibSSE code](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE) which was referenced in DKUtil.
 - [ianpatt's starfield script extender](https://github.com/ianpatt/sfse).
 - [Original plugin template](https://github.com/gottyduke/PluginTemplate)
-```
