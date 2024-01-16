@@ -1076,33 +1076,48 @@ body .markdown-body
 .highlight .vi{color:teal}
 .highlight .il{color:#009999}
 .highlight .gc{color:#999;background-color:#EAF2F5}
-</style><title>readme</title></head><body><article class="markdown-body"><p><img alt="GitHub Release" src="https://img.shields.io/github/v/release/IanE-Official/rehash-sfse-asi-loader" />
-<a href="https://github.com/IanE-Official/rehash-sfse-asi-loader/actions/workflows/test-build.yml"><img alt="test-build" src="https://github.com/IanE-Official/rehash-sfse-asi-loader/actions/workflows/test-build.yml/badge.svg" /></a></p>
+</style><title>README</title></head><body><article class="markdown-body"><p><a href="https://github.com/IanE-Official/rehash-sfse-asi-loader/releases"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/IanE-Official/rehash-sfse-asi-loader" /></a>
+<a href="https://github.com/IanE-Official/rehash-sfse-asi-loader/actions/workflows/build-push.yml"><img alt="Main/Release Build" src="https://github.com/IanE-Official/rehash-sfse-asi-loader/actions/workflows/build-push.yml/badge.svg" /></a></p>
 <h1 id="sfse-asi-loader">📑 SFSE ASI Loader<a class="headerlink" href="#sfse-asi-loader" title="Permanent link"></a></h1>
 <p>SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by Ian E.</p>
-<h2 id="requirements">⚙ Requirements<a class="headerlink" href="#requirements" title="Permanent link"></a></h2>
-<ul>
-<li><a href="https://cmake.org/">CMake</a></li>
-<li>Add this to your <code>PATH</code></li>
-<li><a href="https://github.com/gottyduke/DKUtil">DKUtil</a></li>
-<li>Init &amp; update with git submodule</li>
-<li><a href="https://github.com/ianpatt/sfse">SFSE</a></li>
-<li>Init &amp; update with git submodule</li>
-<li><a href="https://github.com/PowerShell/PowerShell/releases/latest">PowerShell</a></li>
-<li><a href="https://github.com/microsoft/vcpkg">Vcpkg</a></li>
-<li>Add the environment variable <code>VCPKG_ROOT</code> with the value as the path to the folder containing vcpkg</li>
-<li><a href="https://visualstudio.microsoft.com/">Visual Studio Community 2022</a></li>
-<li>Desktop development with C++</li>
-<li><a href="#-deployment">Starfield Steam Distribution</a></li>
-<li>Add the environment variable <code>SFPath</code> with the value as the path to the game installation</li>
-</ul>
 <h2 id="to-install-use-this-mod-as-an-end-user">To install / use this mod as an end-user:<a class="headerlink" href="#to-install-use-this-mod-as-an-end-user" title="Permanent link"></a></h2>
 <ul>
 <li>For the mod to work correctly, Install Starfield (Steam Edition), <a href="https://www.nexusmods.com/starfield/mods/106">Starfield Script Extender (SFSE)</a>, and <a href="https://www.nexusmods.com/starfield/mods/3256">Address Library for SFSE Plugins</a>.</li>
 <li>Download latest compiled version from <a href="https://www.nexusmods.com/starfield/mods/8055?tab=files">NexusMods</a> or my <a href="https://github.com/IanE-Official/rehash-sfse-asi-loader/releases">Github Releases</a></li>
-<li>To use just place expand in your Starfield data directory or just copy the DLL to <code>{StarfieldDirectory}/Data/SFSE/Plugins/</code> and run the game</li>
+<li><strong><em>To use just place expand in your Starfield data directory or just copy the DLL to <code>{StarfieldDirectory}/Data/SFSE/Plugins/</code> and run the game</em></strong></li>
 </ul>
 <h2 id="get-started-from-source">Get started from source<a class="headerlink" href="#get-started-from-source" title="Permanent link"></a></h2>
+<h3 id="requirements">⚙ Requirements<a class="headerlink" href="#requirements" title="Permanent link"></a></h3>
+<ul>
+<li><a href="https://cmake.org/">CMake</a><ul>
+<li>Add this to your <code>PATH</code></li>
+</ul>
+</li>
+<li><a href="https://github.com/gottyduke/DKUtil">DKUtil</a><ul>
+<li>Init &amp; update with git submodule</li>
+</ul>
+</li>
+<li><a href="https://github.com/ianpatt/sfse">SFSE</a><ul>
+<li>Init &amp; update with git submodule</li>
+</ul>
+</li>
+<li><a href="https://github.com/PowerShell/PowerShell/releases/latest">PowerShell</a><ul>
+<li>Runs scripts which automate building</li>
+</ul>
+</li>
+<li><a href="https://github.com/microsoft/vcpkg">Vcpkg</a><ul>
+<li>Add the environment variable <code>VCPKG_ROOT</code> with the value as the path to the folder containing vcpkg</li>
+</ul>
+</li>
+<li><a href="https://visualstudio.microsoft.com/">Visual Studio Community 2022</a><ul>
+<li>Desktop development with C++. Note that VSCode will not build properly.</li>
+</ul>
+</li>
+<li><a href="#-deployment">Starfield Steam Distribution</a><ul>
+<li>Add the environment variable <code>SFPath</code> with the value as the path to the game installation</li>
+</ul>
+</li>
+</ul>
 <h3 id="register-visual-studio-community-2022-as-a-generator">💻 Register Visual Studio Community 2022 as a Generator<a class="headerlink" href="#register-visual-studio-community-2022-as-a-generator" title="Permanent link"></a></h3>
 <ul>
 <li>Open <code>x64 Native Tools Command Prompt</code></li>
@@ -1111,39 +1126,29 @@ body .markdown-body
 </ul>
 <h3 id="building">🔨 Building<a class="headerlink" href="#building" title="Permanent link"></a></h3>
 <p>To build from source (unrecommended):</p>
-<div class="highlight"><pre>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin
+<div class="highlight"><pre>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git Plugin
 cd Plugin
 git submodule init
 git submodule update --remote
+cd ..
+cd extern/vcpkg
+vcpkg integrate install
+cd ..
+cd ..
 .\build-release.ps1
 </pre></div>
 
 <blockquote>
-<p>Change {version} to the newest version of starfield you are trying to build for (currently 1.8.88).</p>
-<p>Please note, failure to set the environment variables as described in requirements section WILL result in the build failing.</p>
+<p>If you are building for a Starfield <strong><em>other than latest</em></strong>, use <code>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin</code> where {version} is set to the newest version of starfield you are trying to build for (currently 1.8.88).</p>
 </blockquote>
 <h3 id="deployment">📦 Deployment<a class="headerlink" href="#deployment" title="Permanent link"></a></h3>
-<p>To get started on adding custom deploy rules, check out the <a href="/Users/iane/Downloads/Plugin/dist/rules">default examples</a>.
-| action | usage |
-| --------- | ------------------------------------------------------------ |
-| <code>base</code> | set variable <code>params[0]</code> with value <code>params[1]</code> |
-| <code>copy</code> | copy <code>params[0]</code> to <code>params[1]</code> |
-| <code>copy_if</code> | do <code>copy</code> if file exists |
-| <code>package</code> | add <code>params[0..-1]</code> list of sources to zip file <code>params[-1]</code> |
-| <code>remove</code> | remove <code>params</code> list of sources |
-| <code>script</code> | execute raw powershell script |</p>
-<p>The following base variables are provided by default:</p>
-<div class="highlight"><pre>cmake_output    // this is the binary output path
-dist            // this is the dist folder path, also the working directory of deployer script
-project_name    // project name same as CMakeLists
-project_version // project version same as CMakeLists
-</pre></div>
-
-<p>Deploy actions can be enabled by build configuration(<code>debug</code>, <code>release</code>, <code>relwithdebinfo</code>, etc)</p>
+<p>Build-release.ps1 will automatically handle deployment.</p>
 <h3 id="dkutil-addon">➕ DKUtil addon<a class="headerlink" href="#dkutil-addon" title="Permanent link"></a></h3>
 <p>This project bundles <a href="https://github.com/gottyduke/DKUtil">DKUtil</a>.</p>
 <h2 id="license">📖 License<a class="headerlink" href="#license" title="Permanent link"></a></h2>
-<p><a href="/Users/iane/Downloads/LICENSE">MIT</a></p>
+<p><a href="/Users/iane/GitWorkspace/rehash-sfse-asi-loader/LICENSE">MIT with conditions</a></p>
+<h2 id="security">Security<a class="headerlink" href="#security" title="Permanent link"></a></h2>
+<p>See <a href="/Users/iane/GitWorkspace/rehash-sfse-asi-loader/security.md">security.md</a></p>
 <h2 id="credits">❓ Credits<a class="headerlink" href="#credits" title="Permanent link"></a></h2>
 <ul>
 <li><a href="https://www.nexusmods.com/starfield/mods/857">Doodlez&rsquo;s original Mod</a> which this was forked from.</li>

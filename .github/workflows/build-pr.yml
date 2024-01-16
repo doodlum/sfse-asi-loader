@@ -1,7 +1,10 @@
-name: cmake-dep
+name: build-pr
 
 on:
-  workflow_dispatch:
+  pull_request:
+    types: [ labeled ]
+    branches:
+      - 'main'
 
 ###############################################################################
 # Add this section to your workflow file does not already have it to enable
@@ -16,10 +19,10 @@ permissions:
 ###############################################################################
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  VCPKG_FEATURE_FLAGS: dependencygraph
 
 jobs:
   cmake:
+    if: contains(github.event.pull_request.labels.*.name, 'ci-ready')
     runs-on: windows-latest
 
     # These steps assume an appropriate version of vcpkg is listed as a
@@ -37,8 +40,5 @@ jobs:
       - name: Integrate vcpkg
         run: ${{ github.workspace }}/extern/vcpkg/vcpkg integrate install
       
-      - name: Configure and Build with CMake
-        run: |
-          cd ${{ github.workspace }}/Plugin
-          cmake -B build -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extern/vcpkg/scripts/buildsystems/vcpkg.cmake
-          cmake --build build -v
+      - name: Build
+        run: pwsh ./build-release.ps1
