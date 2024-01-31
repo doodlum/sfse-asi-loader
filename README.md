@@ -53,9 +53,8 @@ cd ..
 .\build-release.ps1
 ```
 
-> If you are building for a Starfield **_other than latest_**, use ```git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin```
-
-where {version} is set to the newest version of starfield you are trying to build for (currently 1.8.88).
+> If you are building for a Starfield **_other than latest_**, use `git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin`
+> where {version} is set to the newest version of starfield you are trying to build for (currently 1.9.51).
 
 ### 📦 Deployment
 
@@ -70,7 +69,8 @@ This project bundles [DKUtil](https://github.com/gottyduke/DKUtil).
 [MIT with conditions](LICENSE)
 
 ## Security
-See [security.md](security.html)
+
+See [security.md](security.md)
 
 ## ❓ Credits
 

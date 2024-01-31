@@ -1089,34 +1089,20 @@ body .markdown-body
 <h2 id="get-started-from-source">Get started from source<a class="headerlink" href="#get-started-from-source" title="Permanent link"></a></h2>
 <h3 id="requirements">⚙ Requirements<a class="headerlink" href="#requirements" title="Permanent link"></a></h3>
 <ul>
-<li><a href="https://cmake.org/">CMake</a><ul>
+<li><a href="https://cmake.org/">CMake</a></li>
 <li>Add this to your <code>PATH</code></li>
-</ul>
-</li>
-<li><a href="https://github.com/gottyduke/DKUtil">DKUtil</a><ul>
+<li><a href="https://github.com/gottyduke/DKUtil">DKUtil</a></li>
 <li>Init &amp; update with git submodule</li>
-</ul>
-</li>
-<li><a href="https://github.com/ianpatt/sfse">SFSE</a><ul>
+<li><a href="https://github.com/ianpatt/sfse">SFSE</a></li>
 <li>Init &amp; update with git submodule</li>
-</ul>
-</li>
-<li><a href="https://github.com/PowerShell/PowerShell/releases/latest">PowerShell</a><ul>
+<li><a href="https://github.com/PowerShell/PowerShell/releases/latest">PowerShell</a></li>
 <li>Runs scripts which automate building</li>
-</ul>
-</li>
-<li><a href="https://github.com/microsoft/vcpkg">Vcpkg</a><ul>
+<li><a href="https://github.com/microsoft/vcpkg">Vcpkg</a></li>
 <li>Add the environment variable <code>VCPKG_ROOT</code> with the value as the path to the folder containing vcpkg</li>
-</ul>
-</li>
-<li><a href="https://visualstudio.microsoft.com/">Visual Studio Community 2022</a><ul>
+<li><a href="https://visualstudio.microsoft.com/">Visual Studio Community 2022</a></li>
 <li>Desktop development with C++. Note that VSCode will not build properly.</li>
-</ul>
-</li>
-<li><a href="#-deployment">Starfield Steam Distribution</a><ul>
+<li><a href="#-deployment">Starfield Steam Distribution</a></li>
 <li>Add the environment variable <code>SFPath</code> with the value as the path to the game installation</li>
-</ul>
-</li>
 </ul>
 <h3 id="register-visual-studio-community-2022-as-a-generator">💻 Register Visual Studio Community 2022 as a Generator<a class="headerlink" href="#register-visual-studio-community-2022-as-a-generator" title="Permanent link"></a></h3>
 <ul>
@@ -1139,7 +1125,8 @@ cd ..
 </pre></div>
 
 <blockquote>
-<p>If you are building for a Starfield <strong><em>other than latest</em></strong>, use <code>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin</code> where {version} is set to the newest version of starfield you are trying to build for (currently 1.8.88).</p>
+<p>If you are building for a Starfield <strong><em>other than latest</em></strong>, use <code>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin</code>
+where {version} is set to the newest version of starfield you are trying to build for (currently 1.9.51).</p>
 </blockquote>
 <h3 id="deployment">📦 Deployment<a class="headerlink" href="#deployment" title="Permanent link"></a></h3>
 <p>Build-release.ps1 will automatically handle deployment.</p>

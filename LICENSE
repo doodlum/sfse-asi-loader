@@ -1,6 +1,6 @@
-MIT License
+MIT License with Conditions
 
-Copyright (c) Ian Elario 2023 
+Copyright (c) Ian Elario 2023
 
 By downloading and/or executing this software and/or forking this software
 you are bound by the following license:
@@ -14,7 +14,7 @@ furnished to do so, subject to the following conditions:
 
 1.) You can not upload compiled DLLs of this code to other websites and/or
 include them directly with your mod files (instead you must link them
-to this mod's NexusMods page). 
+to this mod's NexusMods page).
 
 2.) You can not copyright this work as your own. You must instead credit
 either Ian_E (for the updated version) or doodlez (for the original)
@@ -23,8 +23,8 @@ and include a link to the NexusMods page respectively).
 3.) You can fork this project and make any changes you desire, but can not
 upload your changes as a new Mod to NexusMods unless consiterable and fundamental
 changes are made to the code. This subsection (3), does not apply if this mod
-is considered abandoned (either by a public statement from Ian Elario or 
-one (1) week following a failure to upload an updated version of this mod 
+is considered abandoned (either by a public statement from Ian Elario or
+one (1) week following a failure to upload an updated version of this mod
 for two (2) consecutive StarField releases).
 
 4.) THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
