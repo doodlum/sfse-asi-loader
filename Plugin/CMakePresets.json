@@ -59,11 +59,6 @@
       "generator": "Visual Studio 17 2022"
     },
     {
-      "name": "generator-ninja",
-      "hidden": true,
-      "generator": "Ninja"
-    },
-    {
       "name": "compiler-msvc",
       "hidden": true,
       "environment": {
@@ -113,37 +108,6 @@
       ]
     },
     {
-      "name": "build-debug-msvc-ninja",
-      "inherits": [
-        "common",
-        "packaging-vcpkg",
-        "buildtype-debug",
-        "generator-ninja",
-        "compiler-msvc"
-      ]
-    },
-    {
-      "name": "build-debug-clang-cl-msvc",
-      "toolset": "ClangCL",
-      "inherits": [
-        "common",
-        "packaging-vcpkg",
-        "buildtype-debug",
-        "generator-msvc",
-        "compiler-clang-cl"
-      ]
-    },
-    {
-      "name": "build-debug-clang-cl-ninja",
-      "inherits": [
-        "common",
-        "packaging-vcpkg",
-        "buildtype-debug",
-        "generator-ninja",
-        "compiler-clang-cl"
-      ]
-    },
-    {
       "name": "build-release-msvc-msvc",
       "inherits": [
         "common",
@@ -152,79 +116,18 @@
         "generator-msvc",
         "compiler-msvc"
       ]
-    },
-    {
-      "name": "build-release-msvc-ninja",
-      "inherits": [
-        "common",
-        "packaging-vcpkg",
-        "buildtype-release",
-        "generator-ninja",
-        "compiler-msvc"
-      ]
-    },
-    {
-      "name": "build-release-clang-cl-msvc",
-      "toolset": "ClangCL",
-      "inherits": [
-        "common",
-        "packaging-vcpkg",
-        "buildtype-release",
-        "generator-msvc",
-        "compiler-clang-cl"
-      ]
-    },
-    {
-      "name": "build-release-clang-cl-ninja",
-      "inherits": [
-        "common",
-        "packaging-vcpkg",
-        "buildtype-release",
-        "generator-ninja",
-        "compiler-clang-cl"
-      ]
     }
   ],
   "buildPresets": [
     {
-      "name": "debug-msvc-ninja",
-      "configurePreset": "build-debug-msvc-ninja",
-      "displayName": "1. (Debug) MSVC - Ninja"
-    },
-    {
-      "name": "release-msvc-ninja",
-      "configurePreset": "build-release-msvc-ninja",
-      "displayName": "2. (Release) MSVC - Ninja"
-    },
-    {
       "name": "debug-msvc-msvc",
       "configurePreset": "build-debug-msvc-msvc",
-      "displayName": "3. (Debug) MSVC - MSVC"
+      "displayName": "1. (Debug) MSVC - MSVC"
     },
     {
       "name": "release-msvc-msvc",
       "configurePreset": "build-release-msvc-msvc",
-      "displayName": "4. (Release) MSVC - MSVC"
-    },
-    {
-      "name": "debug-clang-cl-ninja",
-      "configurePreset": "build-debug-clang-cl-ninja",
-      "displayName": "5. (Debug) Clang - Ninja"
-    },
-    {
-      "name": "release-clang-cl-ninja",
-      "configurePreset": "build-release-clang-cl-ninja",
-      "displayName": "6. (Release) Clang - Ninja"
-    },
-    {
-      "name": "debug-clang-cl-msvc",
-      "configurePreset": "build-debug-clang-cl-msvc",
-      "displayName": "7. (Debug) Clang - MSVC"
-    },
-    {
-      "name": "release-clang-cl-msvc",
-      "configurePreset": "build-release-clang-cl-msvc",
-      "displayName": "8. (Release) Clang - MSVC"
+      "displayName": "2. (Release) MSVC - MSVC"
     }
   ]
 }

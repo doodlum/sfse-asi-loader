@@ -1,4 +1,4 @@
-name: test-build
+name: dispatched-test-build
 
 on:
   workflow_dispatch:

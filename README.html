@@ -1081,28 +1081,42 @@ body .markdown-body
 <h1 id="sfse-asi-loader">📑 SFSE ASI Loader<a class="headerlink" href="#sfse-asi-loader" title="Permanent link"></a></h1>
 <p>SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by Ian E.</p>
 <h2 id="to-install-use-this-mod-as-an-end-user">To install / use this mod as an end-user:<a class="headerlink" href="#to-install-use-this-mod-as-an-end-user" title="Permanent link"></a></h2>
-<ul>
+<ol>
 <li>For the mod to work correctly, Install Starfield (Steam Edition), <a href="https://www.nexusmods.com/starfield/mods/106">Starfield Script Extender (SFSE)</a>, and <a href="https://www.nexusmods.com/starfield/mods/3256">Address Library for SFSE Plugins</a>.</li>
 <li>Download latest compiled version from <a href="https://www.nexusmods.com/starfield/mods/8055?tab=files">NexusMods</a> or my <a href="https://github.com/IanE-Official/rehash-sfse-asi-loader/releases">Github Releases</a></li>
 <li><strong><em>To use just place expand in your Starfield data directory or just copy the DLL to <code>{StarfieldDirectory}/Data/SFSE/Plugins/</code> and run the game</em></strong></li>
-</ul>
+</ol>
 <h2 id="get-started-from-source">Get started from source<a class="headerlink" href="#get-started-from-source" title="Permanent link"></a></h2>
 <h3 id="requirements">⚙ Requirements<a class="headerlink" href="#requirements" title="Permanent link"></a></h3>
 <ul>
-<li><a href="https://cmake.org/">CMake</a></li>
+<li><a href="https://cmake.org/">CMake</a><ul>
 <li>Add this to your <code>PATH</code></li>
-<li><a href="https://github.com/gottyduke/DKUtil">DKUtil</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/gottyduke/DKUtil">DKUtil</a><ul>
+<li>Used for logging primarily; Init &amp; update with git submodule</li>
+</ul>
+</li>
+<li><a href="https://github.com/ianpatt/sfse">SFSE</a><ul>
 <li>Init &amp; update with git submodule</li>
-<li><a href="https://github.com/ianpatt/sfse">SFSE</a></li>
-<li>Init &amp; update with git submodule</li>
-<li><a href="https://github.com/PowerShell/PowerShell/releases/latest">PowerShell</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/PowerShell/PowerShell/releases/latest">PowerShell</a><ul>
 <li>Runs scripts which automate building</li>
-<li><a href="https://github.com/microsoft/vcpkg">Vcpkg</a></li>
-<li>Add the environment variable <code>VCPKG_ROOT</code> with the value as the path to the folder containing vcpkg</li>
-<li><a href="https://visualstudio.microsoft.com/">Visual Studio Community 2022</a></li>
-<li>Desktop development with C++. Note that VSCode will not build properly.</li>
-<li><a href="#-deployment">Starfield Steam Distribution</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/microsoft/vcpkg">Vcpkg</a><ul>
+<li>Handles non-submodule dependency packages</li>
+</ul>
+</li>
+<li><a href="https://visualstudio.microsoft.com/">Visual Studio Community 2022</a><ul>
+<li>Desktop development with C++. <strong>Note that VSCode will not build properly at this time.</strong></li>
+</ul>
+</li>
+<li><a href="#-deployment">Starfield Steam Distribution</a><ul>
 <li>Add the environment variable <code>SFPath</code> with the value as the path to the game installation</li>
+</ul>
+</li>
 </ul>
 <h3 id="register-visual-studio-community-2022-as-a-generator">💻 Register Visual Studio Community 2022 as a Generator<a class="headerlink" href="#register-visual-studio-community-2022-as-a-generator" title="Permanent link"></a></h3>
 <ul>
@@ -1116,8 +1130,8 @@ body .markdown-body
 cd Plugin
 git submodule init
 git submodule update --remote
-cd ..
 cd extern/vcpkg
+./bootstrap-vcpkg.bat
 vcpkg integrate install
 cd ..
 cd ..
@@ -1125,17 +1139,17 @@ cd ..
 </pre></div>
 
 <blockquote>
-<p>If you are building for a Starfield <strong><em>other than latest</em></strong>, use <code>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin</code>
+<p>If you are building for a Starfield <strong><em>other than the latest</em></strong>, use <code>git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin</code>
 where {version} is set to the newest version of starfield you are trying to build for (currently 1.9.51).</p>
 </blockquote>
 <h3 id="deployment">📦 Deployment<a class="headerlink" href="#deployment" title="Permanent link"></a></h3>
-<p>Build-release.ps1 will automatically handle deployment.</p>
+<p>Automated steps in Build-release.ps1 will automatically handle deployment.</p>
 <h3 id="dkutil-addon">➕ DKUtil addon<a class="headerlink" href="#dkutil-addon" title="Permanent link"></a></h3>
 <p>This project bundles <a href="https://github.com/gottyduke/DKUtil">DKUtil</a>.</p>
 <h2 id="license">📖 License<a class="headerlink" href="#license" title="Permanent link"></a></h2>
 <p><a href="/Users/iane/GitWorkspace/rehash-sfse-asi-loader/LICENSE">MIT with conditions</a></p>
 <h2 id="security">Security<a class="headerlink" href="#security" title="Permanent link"></a></h2>
-<p>See <a href="/Users/iane/GitWorkspace/rehash-sfse-asi-loader/security.md">security.md</a></p>
+<p>See <a href="/Users/iane/GitWorkspace/rehash-sfse-asi-loader/SECURITY.md">security.md</a></p>
 <h2 id="credits">❓ Credits<a class="headerlink" href="#credits" title="Permanent link"></a></h2>
 <ul>
 <li><a href="https://www.nexusmods.com/starfield/mods/857">Doodlez&rsquo;s original Mod</a> which this was forked from.</li>

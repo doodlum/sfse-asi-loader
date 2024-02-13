@@ -7,9 +7,9 @@ SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by I
 
 ## To install / use this mod as an end-user:
 
-- For the mod to work correctly, Install Starfield (Steam Edition), [Starfield Script Extender (SFSE)](https://www.nexusmods.com/starfield/mods/106), and [Address Library for SFSE Plugins](https://www.nexusmods.com/starfield/mods/3256).
-- Download latest compiled version from [NexusMods](https://www.nexusmods.com/starfield/mods/8055?tab=files) or my [Github Releases](https://github.com/IanE-Official/rehash-sfse-asi-loader/releases)
-- **_To use just place expand in your Starfield data directory or just copy the DLL to `{StarfieldDirectory}/Data/SFSE/Plugins/` and run the game_**
+1. For the mod to work correctly, Install Starfield (Steam Edition), [Starfield Script Extender (SFSE)](https://www.nexusmods.com/starfield/mods/106), and [Address Library for SFSE Plugins](https://www.nexusmods.com/starfield/mods/3256).
+2. Download latest compiled version from [NexusMods](https://www.nexusmods.com/starfield/mods/8055?tab=files) or my [Github Releases](https://github.com/IanE-Official/rehash-sfse-asi-loader/releases)
+3. **_To use just place expand in your Starfield data directory or just copy the DLL to `{StarfieldDirectory}/Data/SFSE/Plugins/` and run the game_**
 
 ## Get started from source
 
@@ -18,15 +18,15 @@ SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by I
 - [CMake](https://cmake.org/)
   - Add this to your `PATH`
 - [DKUtil](https://github.com/gottyduke/DKUtil)
-  - Init & update with git submodule
+  - Used for logging primarily; Init & update with git submodule
 - [SFSE](https://github.com/ianpatt/sfse)
   - Init & update with git submodule
 - [PowerShell](https://github.com/PowerShell/PowerShell/releases/latest)
   - Runs scripts which automate building
 - [Vcpkg](https://github.com/microsoft/vcpkg)
-  - Add the environment variable `VCPKG_ROOT` with the value as the path to the folder containing vcpkg
+  - Handles non-submodule dependency packages
 - [Visual Studio Community 2022](https://visualstudio.microsoft.com/)
-  - Desktop development with C++. Note that VSCode will not build properly.
+  - Desktop development with C++. **Note that VSCode will not build properly at this time.**
 - [Starfield Steam Distribution](#-deployment)
   - Add the environment variable `SFPath` with the value as the path to the game installation
 
@@ -45,20 +45,20 @@ git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git Plugin
 cd Plugin
 git submodule init
 git submodule update --remote
-cd ..
 cd extern/vcpkg
+./bootstrap-vcpkg.bat
 vcpkg integrate install
 cd ..
 cd ..
 .\build-release.ps1
 ```
 
-> If you are building for a Starfield **_other than latest_**, use `git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin`
+> If you are building for a Starfield **_other than the latest_**, use `git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin`
 > where {version} is set to the newest version of starfield you are trying to build for (currently 1.9.51).
 
 ### 📦 Deployment
 
-Build-release.ps1 will automatically handle deployment.
+Automated steps in Build-release.ps1 will automatically handle deployment.
 
 ### ➕ DKUtil addon
 
@@ -70,7 +70,7 @@ This project bundles [DKUtil](https://github.com/gottyduke/DKUtil).
 
 ## Security
 
-See [security.md](security.md)
+See [security.md](SECURITY.md)
 
 ## ❓ Credits
 
