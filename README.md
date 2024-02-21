@@ -41,8 +41,8 @@ SFSE plugin which safely preloads ASI mods with logging forked from Doodlez by I
 To build from source (unrecommended):
 
 ```
-git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git Plugin
-cd Plugin
+git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git sfse-asi-loader
+cd sfse-asi-loader
 git submodule init
 git submodule update --remote
 cd extern/vcpkg
@@ -53,8 +53,8 @@ cd ..
 .\build-release.ps1
 ```
 
-> If you are building for a Starfield **_other than the latest_**, use `git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} Plugin`
-> where {version} is set to the newest version of starfield you are trying to build for (currently 1.9.51).
+> If you are building for a Starfield **_other than the latest_**, use `git clone https://github.com/IanE-Official/rehash-sfse-asi-loader.git --branch {version} sfse-asi-loader`
+> where {version} is set to the newest version of starfield you are trying to build for (currently 1.9.67).
 
 ### 📦 Deployment
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
   "name": "sfseasiloader",
-  "version-string": "1.9.51",
-  "description": "asi loader for sfse",
+  "version-string": "1.9.67",
+  "description": "updated asi loader for sfse",
   "homepage": "https://github.com/IanE-Official/rehash-sfse-asi-loader",
   "dependencies": [
     "spdlog",
